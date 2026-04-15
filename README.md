@@ -1,6 +1,6 @@
 # PlayerPets
 
-This is my first mod. dunno why i am publihsing this. it works, and maybe someone else wants it?
+Vanilla style player pets and owners mod. This is my first mod. dunno why i am publihsing this. it works, and maybe someone else wants it?
 
 ### this project is heavily ai coded. why? why use ai?
 
