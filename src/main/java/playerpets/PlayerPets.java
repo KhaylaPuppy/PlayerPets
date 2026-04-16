@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import playerpets.system.PlayerPetsCommands;
 import playerpets.system.PlayerPetsHandler;
+import playerpets.system.PlayerPetsTeleport;
 
 public class PlayerPets implements ModInitializer {
 	public static final String MOD_ID = "playerpets";
@@ -20,5 +21,6 @@ public class PlayerPets implements ModInitializer {
 
 		PlayerPetsCommands.register();
 		PlayerPetsHandler.register();
+		PlayerPetsTeleport.register();
 	}
 }
