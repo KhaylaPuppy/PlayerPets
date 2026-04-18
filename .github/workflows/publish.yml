@@ -35,10 +35,9 @@ jobs:
         with:
           files: build/libs/*.jar
 
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          version: ${{ github.ref_name }}
 
-          modrinth-id: YOUR_ID
+          modrinth-id: 9mvW2uyV
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
-          curseforge-id: YOUR_ID
-          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
