@@ -2,8 +2,8 @@ name: Build and Publish
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "v*"
 
 jobs:
   build:
@@ -21,6 +21,9 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
       - name: Build mod
         run: ./gradlew build
 
@@ -31,7 +34,6 @@ jobs:
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-          # Optional:
           modrinth-id: YOUR_ID
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
