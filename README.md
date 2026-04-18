@@ -11,7 +11,8 @@ This is my first mod. dunno why i am publihsing this. it works, and maybe someon
 - any player can be an owner or a pet, simply whoever tames who first with a bone. tamed players cannot tame others or be tamed by anyone else (unless they run away first)
 - /playerpets runaway: run away from your current owner (wipes your nbt data, lets you own other players or become someone elses pet)
 - /playerpets owner: veiw your current owner (dumps your current nbt data)
-- if a pet is too far from their owner they get teleported closer (unless sitting)
+- if a pet is too far from their owner, and if space is clear (and if nobody is in vehicle, flying, swimming, etc) they get teleported closer (1s cooldown to prevent errors)
+- pet cannot attack their owner
 
 ### Server sided
 
@@ -57,8 +58,13 @@ and thats why the no license. well this isnt my code, its nearly 100% from ai wh
 - [x] /playerpets owner: veiw your current owner (dumps your current nbt data)
 - [ ] Store username instead of UUID in NBT
 - [ ] use UUID to update username in case username changes (somehow)
-- [x] rewrote how nbt data is read and stored (multiple effects)
-- [x] rewrote handler file, split functions into scoped files, and placed a proper flowchart to handle righ click events
+- [x] rewrite how nbt data is read and stored (multiple effects)
+- [x] rewrite handler file, split functions into scoped files, and placed a proper flowchart to handle righ click events
+- [x] add owner swing animation when interacting with their pet
+- [ ] fix teleport feature causing "player mvoed too quickly" logs in console (dunno how to fix)
+- [x] add extra checks to teleport feature (must not be swimming or in vehicle or flying) to match vanilla better
+- [x] remove redundant sit check for teleport feature
+- [x] prevent pet from attacking their owner
 
 ### Bug List
 - [x] modrinth page not accurate
@@ -70,6 +76,10 @@ and thats why the no license. well this isnt my code, its nearly 100% from ai wh
 - [x] owner cant have multiple pets
 - [x] duplicate nbt data on owner and pet
 - [x] sync issues between owner and pet nbt data
+- [x] no animation when interacting with pet
+- [ ] teleport feature causes "player moved too quickly" logs in console (dunno how to fix)
+- [x] teleport too aggressive, missing some checks
+- [x] custom sit check now redudnant
 
 ## License
 

@@ -1,0 +1,39 @@
+name: Build and Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Build mod
+        run: ./gradlew build
+
+      - name: Publish
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          files: build/libs/*.jar
+
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Optional:
+          modrinth-id: YOUR_ID
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          curseforge-id: YOUR_ID
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}

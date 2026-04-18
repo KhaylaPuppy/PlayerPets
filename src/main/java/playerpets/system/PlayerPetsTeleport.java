@@ -6,13 +6,22 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 
-import java.util.UUID;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.block.BlockState;
 
-import playerpets.accessor.PlayerPetsAccessor;
+import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PlayerPetsTeleport {
 
     private static final double TELEPORT_DISTANCE = 12.0;
+
+    // cooldown in ticks (20 ticks = 1 second)
+    private static final int TELEPORT_COOLDOWN = 20;
+
+    // track last teleport time per pet
+    private static final Map<UUID, Integer> lastTeleportTick = new HashMap<>();
 
     public static void register() {
 
@@ -23,15 +32,22 @@ public class PlayerPetsTeleport {
 
     private static void tick(MinecraftServer server) {
 
+        int currentTick = server.getTicks();
+
         for (ServerPlayerEntity pet : server.getPlayerManager().getPlayerList()) {
 
             PlayerPetsAccessor petAcc = (PlayerPetsAccessor) pet;
 
+            UUID petId = pet.getUuid();
+
+            // ❌ cooldown check
+            if (lastTeleportTick.containsKey(petId)) {
+                int lastTick = lastTeleportTick.get(petId);
+                if (currentTick - lastTick < TELEPORT_COOLDOWN) continue;
+            }
+
             UUID ownerId = petAcc.playerpets$getOwner();
             if (ownerId == null) continue;
-
-            // ❌ sitting pets do not move
-            if (petAcc.playerpets$isSitting()) continue;
 
             ServerPlayerEntity owner = server.getPlayerManager().getPlayer(ownerId);
             if (owner == null) continue;
@@ -39,25 +55,49 @@ public class PlayerPetsTeleport {
             // must be same dimension
             if (owner.getWorld() != pet.getWorld()) continue;
 
+            // ❌ both must be properly standing
+            if (!pet.isOnGround() || !owner.isOnGround()) continue;
+            if (pet.hasVehicle() || owner.hasVehicle()) continue;
+            if (pet.isTouchingWater() || owner.isTouchingWater()) continue;
+
             double distanceSq = pet.squaredDistanceTo(owner);
 
             if (distanceSq > TELEPORT_DISTANCE * TELEPORT_DISTANCE) {
 
                 ServerWorld world = owner.getServerWorld();
+                BlockPos base = owner.getBlockPos();
 
-                pet.teleport(
-                        world,
-                        owner.getX(),
-                        owner.getY(),
-                        owner.getZ(),
+                BlockPos safePos = null;
+
+                for (BlockPos pos : BlockPos.iterateOutwards(base, 2, 1, 2)) {
+
+                    BlockPos below = pos.down();
+
+                    BlockState belowState = world.getBlockState(below);
+                    BlockState state = world.getBlockState(pos);
+                    BlockState above = world.getBlockState(pos.up());
+
+                    if (!belowState.isSolidBlock(world, below)) continue;
+                    if (!state.isAir() || !above.isAir()) continue;
+
+                    safePos = pos;
+                    break;
+                }
+
+                if (safePos == null) continue;
+
+                pet.refreshPositionAndAngles(
+                        safePos.getX() + 0.5,
+                        safePos.getY(),
+                        safePos.getZ() + 0.5,
                         pet.getYaw(),
                         pet.getPitch()
                 );
 
-                System.out.println("Pet teleported: "
-                        + pet.getName().getString()
-                        + " -> "
-                        + owner.getName().getString());
+                pet.networkHandler.syncWithPlayerPosition();
+
+                // ✅ set cooldown
+                lastTeleportTick.put(petId, currentTick);
             }
         }
     }
