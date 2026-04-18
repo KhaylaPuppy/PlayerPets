@@ -7,14 +7,16 @@ public class PlayerPetsSit {
 
     public static ActionResult handle(ServerPlayerEntity owner, ServerPlayerEntity target) {
 
-        boolean newState = !target.playerpets$isSitting();
-        target.playerpets$setSitting(newState);
+        AccessorMixinMain pet = (AccessorMixinMain) target;
 
-        if (newState) {
-            System.out.println("sit: sitting " + target.getName().getString());
-        } else {
-            System.out.println("sit: standing " + target.getName().getString());
-        }
+        boolean newState = !pet.playerpets$isSitting();
+        pet.playerpets$setSitting(newState);
+
+        System.out.println(
+                newState
+                        ? "sit: sitting " + target.getName().getString()
+                        : "sit: standing " + target.getName().getString()
+        );
 
         return ActionResult.SUCCESS;
     }
