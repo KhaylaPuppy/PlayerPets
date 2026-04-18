@@ -13,6 +13,17 @@ This is my first mod. dunno why i am publihsing this. it works, and maybe someon
 - /playerpets owner: veiw your current owner (dumps your current nbt data)
 - if a pet is too far from their owner they get teleported closer (unless sitting)
 
+### Server sided
+
+this mod is entirely server sided as of v1.2
+
+| PlayerPets                       | Player doesn't have Player Pets    | Player has PlayerPets                                         |
+|----------------------------------|------------------------------------|---------------------------------------------------------------|
+| Host doesn't have Player Pets    | Nothing will happen silly :p       | Player can join without issue, but PlayerPets does nothing    |
+| Host has Player Pets             | PlayerPets is 100% Functional      | PlayerPets is 100% Functional, redundant but harmless         |
+
+note that the Host can be anything from a dedicated server to an internal server (like from clicking LAN in a singleplayer world) Just as long as the Host has the mod, the mod will work
+
 # but why? why not planned? why ai?
 
 this mod is developed exclusivly for **1.20.1** as this is what me and my boyfriend play on. While my mod seems to work for other 1.20.x version, i make no promise of function for them, and bug fixing for these version will be severly limited. srry.
@@ -26,18 +37,6 @@ i nornally hate using ai for coding, i usually hand code absolutly everything (c
 but i had to, i dont know java, all i know is html and css (not even much js). this is my first minecraft mod and i really wanted to make a simple pet mod for me and my boyfriend (and maybe larn some java along the way) i wasnt even sure about publuishing this publicly but, may as well? it does actually work, and maybe someoen else wants it?
 
 and thats why the no license. well this isnt my code, its nearly 100% from ai which comes from who knows where. can you imagine claiming it as my own or demanding copyright respect? heck no. public domain it is.
-
-### Server sided
-
-this mod is entirely server sided as of v1.2
-
-| PlayerPets                      | Player doesn't have Player Pets   | Player has PlayerPets                                         |
-|---------------------------------|-----------------------------------|---------------------------------------------------------------|
-| Server doesn't have Player Pets | Nothing will happen silly :p      | Player can join without issue, but PlayerPets does nothing    |
-| Server has Player Pets          | PlayerPets is 100% Functional     | PlayerPets is 100% Functional, redundant but harmless         |
-|                                 |                                   |                                                               |
-
-note that "server" can be an internal server from a singleplayer world hosted on lan. as long as MAIN has the mod, the mod will work
 
 ### ToDo List
 - [x] figure out what 1.20.x versions work
