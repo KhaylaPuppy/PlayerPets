@@ -3,7 +3,7 @@
 	"package": "playerpets.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"PlayerPetsMixin"
+		"MixinMain"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -3,13 +3,11 @@ package playerpets.system;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 
-import playerpets.accessor.PlayerPetsAccessor;
 
 public class PlayerPetsSit {
 
     public static ActionResult handle(ServerPlayerEntity owner, ServerPlayerEntity target) {
 
-        PlayerPetsAccessor pet = (PlayerPetsAccessor) target;
 
         boolean newState = !pet.playerpets$isSitting();
         pet.playerpets$setSitting(newState);

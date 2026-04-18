@@ -9,7 +9,7 @@ import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 
-import playerpets.accessor.PlayerPetsAccessor;
+import playerpets.system.AccessorMixinMain;
 
 public class PlayerPetsCommands {
 
@@ -36,7 +36,7 @@ public class PlayerPetsCommands {
                                 .executes(ctx -> {
 
                                     ServerPlayerEntity player = ctx.getSource().getPlayer();
-                                    PlayerPetsAccessor pet = (PlayerPetsAccessor) player;
+                                    AccessorMixinMain pet = (AccessorMixinMain) player;
 
                                     if (pet.playerpets$getOwner() == null) {
 
@@ -70,7 +70,7 @@ public class PlayerPetsCommands {
                                 .executes(ctx -> {
 
                                     ServerPlayerEntity player = ctx.getSource().getPlayer();
-                                    PlayerPetsAccessor pet = (PlayerPetsAccessor) player;
+                                    AccessorMixinMain pet = (AccessorMixinMain) player;
 
                                     if (pet.playerpets$getOwner() == null) {
 

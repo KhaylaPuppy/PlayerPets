@@ -36,7 +36,7 @@ public class PlayerPetsTeleport {
 
         for (ServerPlayerEntity pet : server.getPlayerManager().getPlayerList()) {
 
-            PlayerPetsAccessor petAcc = (PlayerPetsAccessor) pet;
+            AccessorMixinMain petAcc = (AccessorMixinMain) pet;
 
             UUID petId = pet.getUuid();
 

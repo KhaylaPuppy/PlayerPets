@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import playerpets.system.PlayerPetsAccessor;
+import playerpets.system.AccessorMixinMain;
 
 public class PlayerPetsHandler {
 
@@ -27,7 +27,7 @@ public class PlayerPetsHandler {
                 if (!(player instanceof ServerPlayerEntity attacker)) return ActionResult.PASS;
                 if (!(entity instanceof ServerPlayerEntity target)) return ActionResult.PASS;
 
-                PlayerPetsAccessor pet = (PlayerPetsAccessor) attacker;
+                AccessorMixinMain pet = (AccessorMixinMain) attacker;
                 UUID owner = pet.playerpets$getOwner();
 
                 // If attacker is a pet and target is its owner → block
@@ -57,7 +57,7 @@ public class PlayerPetsHandler {
             ItemStack held = owner.getMainHandStack();
             boolean hasBone = held.getItem() == Items.BONE;
 
-            PlayerPetsAccessor pet = (PlayerPetsAccessor) target;
+            AccessorMixinMain pet = (AccessorMixinMain) target;
 
             UUID targetOwner = pet.playerpets$getOwner();
 

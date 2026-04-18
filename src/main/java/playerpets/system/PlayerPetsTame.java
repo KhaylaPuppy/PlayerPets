@@ -8,7 +8,7 @@ import net.minecraft.particle.ParticleTypes;
 
 import java.util.UUID;
 
-import playerpets.accessor.PlayerPetsAccessor;
+import playerpets.system.AccessorMixinMain;
 
 public class PlayerPetsTame {
 
@@ -20,7 +20,7 @@ public class PlayerPetsTame {
             ItemStack held
     ) {
 
-        PlayerPetsAccessor pet = (PlayerPetsAccessor) target;
+        AccessorMixinMain pet = (AccessorMixinMain) target;
 
         if (owner.equals(target)) {
             System.out.println("Tame blocked: you cannot tame yourself");
