@@ -11,15 +11,42 @@ This is my first mod. dunno why i am publihsing this. it works, and maybe someon
 - any player can be an owner or a pet, simply whoever tames who first with a bone. tamed players cannot tame others or be tamed by anyone else (unless they run away first)
 - /playerpets runaway: run away from your current owner (wipes your nbt data, lets you own other players or become someone elses pet)
 - /playerpets owner: veiw your current owner (dumps your current nbt data)
+- if a pet is too far from their owner they get teleported closer (unless sitting)
+
+# but why? why not planned? why ai?
+
+this mod is developed exclusivly for **1.20.1** as this is what me and my boyfriend play on. While my mod seems to work for other 1.20.x version, i make no promise of function for them, and bug fixing for these version will be severly limited. srry.
+
+other major or minor versions, other loaders, and making my own leash mechanics are all not planned. it was already hell to build this mod for the specific version and loader me and bae wanted to use it on, so im sorry but i cannt do other versions or loaders
+
+leashing is technically impossible because players are not entities. i do NOT have the ability to make a workaround, i know they exist, other mods have done it, but i cant. those mod wont have issues with mine tho, they should conpliment each other very well (i might be able to add an optional integration with a player leash mod with my owner mechanic, but thats the extent of it)
+
+i nornally hate using ai for coding, i usually hand code absolutly everything (check my website, its entirely hand coded) i had to fight ai ALOT on this project, i absolutly hated it, and i cant even say i made the end product. oh well
+
+but i had to, i dont know java, all i know is html and css (not even much js). this is my first minecraft mod and i really wanted to make a simple pet mod for me and my boyfriend (and maybe larn some java along the way) i wasnt even sure about publuishing this publicly but, may as well? it does actually work, and maybe someoen else wants it?
+
+and thats why the no license. well this isnt my code, its nearly 100% from ai which comes from who knows where. can you imagine claiming it as my own or demanding copyright respect? heck no. public domain it is.
+
+### Server sided
+
+this mod is entirely server sided as of v1.2
+
+| PlayerPets                      | Player doesn't have Player Pets   | Player has PlayerPets                                         |
+|---------------------------------|-----------------------------------|---------------------------------------------------------------|
+| Server doesn't have Player Pets | Nothing will happen silly :p      | Player can join without issue, but PlayerPets does nothing    |
+| Server has Player Pets          | PlayerPets is 100% Functional     | PlayerPets is 100% Functional, redundant but harmless         |
+|                                 |                                   |                                                               |
+
+note that "server" can be an internal server from a singleplayer world hosted on lan. as long as MAIN has the mod, the mod will work
 
 ### ToDo List
-- [ ] figure out what 1.20.x versions work
-- [ ] figure out if mod is client or server sided (or both)
+- [x] figure out what 1.20.x versions work
+- [x] figure out if mod is client or server sided (or both)
 - [x] tame any player by using a bone on them (vanilla based mechanics, particles, and tame chance)
 - [x] any player can be an owner or a pet, simply whoever tames who first with a bone. tamed players cannot tame others or be tamed by anyone else (unless they run away first)
 - [x] accessor to expose mixins
 - [ ] owners can force their pet to sit
-- [ ] if a pet is too far from their owner they get teleported closer (unless sitting)
+- [x] if a pet is too far from their owner they get teleported closer (unless sitting)
 - [ ] visual collar when tamed
 - [ ] feed and heal your pet by right clicking them with food
 - [ ] integration for jade/waila/whtit (when looking at a pet, show show owns them)
@@ -35,7 +62,7 @@ This is my first mod. dunno why i am publihsing this. it works, and maybe someon
 - [x] rewrote handler file, split functions into scoped files, and placed a proper flowchart to handle righ click events
 
 ### Bug List
-- [ ] modrinth page not accurate
+- [x] modrinth page not accurate
 - [x] commands cant access mixins 
 - [x] improper mixin access from handler causes crash
 - [x] commands not registered properly
@@ -44,22 +71,6 @@ This is my first mod. dunno why i am publihsing this. it works, and maybe someon
 - [x] owner cant have multiple pets
 - [x] duplicate nbt data on owner and pet
 - [x] sync issues between owner and pet nbt data
-
-# why not planned? why ai?
-
-other versions, loaders, and making my own leash mechanics are not planned, and yes, this project is nearly 100% ai.
-
-it was already hell to build this mod for the specific version and loader me and bae wanted to use it on, so im sorry but i cannt do other versions or loaders
-
-and leashing is technically impossible because players are not entities. i do NOT have the ability to make a workaround, i know they exist, other mods have done it, but i cant. those mod wont have issues with mine tho, they should conpliment each other very well
-
-i might be able to add an optional integration with a player leash mod with my owner mechanic, but thats the extent of it
-
-i nornally hate using ai for coding, i usually hand code absolutly everything (check my website, its entirely hand coded) i had to fight ai ALOT on this project, i absolutly hated it, and i cant even say i made the end product.
-
-but, i dont know java, all i know is html and css (not even much js) and this was my first ever minecraft mod. all i really wanted to do was make a simple pet mod for me and my boyfriend and maybe elarn some java along the way. i wasnt even sure about publuishing this publicly but, may as well? it does actually work, and maybe someoen else wants it?
-
-so thats why the no license. well this isnt my code, its nearly 100% from ai which comes from who knows where. can you imagine claiming it as my own or demanding copyright respect? heck no. public domain it is.
 
 ## License
 
